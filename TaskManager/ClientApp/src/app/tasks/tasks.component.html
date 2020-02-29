@@ -1,0 +1,21 @@
+<header class="header">
+  <h1>Task list</h1>
+
+  <div class="input-group">
+    <input class="form-control" placeholder="Task description" [(ngModel)]="newTask.text" (keyup.enter)="addTask()">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="addTask()">Add</button>
+    </div>
+  </div>
+</header>
+<section *ngIf="tasks.length > 0">
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let task of tasks" class="list-group-item">
+      <div class="">
+        <input type="checkbox" (change)="toggleTaskCompletion(task)" [checked]="task.isCompleted">
+        <label>{{task.text}}</label>
+        <button (click)="removeTask(task)" class="btn btn-outline-danger btn-sm float-right">Remove</button>
+      </div>
+    </li>
+  </ul>
+</section>
